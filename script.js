@@ -180,11 +180,11 @@ const starWarsCharacters = [
   /* ESERCIZIO 6
     Usa un while loop per calcolare la massa totale dell'equipaggio. Salvala in una variabile chiamata "crewMass".
   */
-    let gino = 0
+    let gino = 0 // indice, era meglio chiamarla index
     let crewMass = 0
     
     while (gino < starWarsCharacters.length) {
-      crewMass += starWarsCharacters[gino].mass || 0
+      crewMass = crewMass + starWarsCharacters[gino].mass
       gino++
     }
     
@@ -229,7 +229,46 @@ const starWarsCharacters = [
     Una volta fatto crea un console.log per controllare la proprietà length di "charactersNames" prima e dopo l'operazione.
   */
   
+console.log(charactersNames.length) // 10
+// dobbiamo rimuovere da qui dentro i nomi corrispondenti alle due donne
+for(let i = 0; i < charactersNames.length; i++) {
+  // per ognuno dei nomi in charactersLength...
+for(let j = 0; j < femaleCharacters.length; j++) {
+   // per ognuno dei nomi in femaleCharacters...
+   if(charactersNames[i] === femaleCharacters[j].name){
+   // abbiamo trovato il nome da eliminare in charactersNames!
+  charactersNames.splice(i, 1)
+   } 
+  }
+ }
+
+ console.log(charactersNames) // un array di nome maschilista
+
   /* --EXTRA-- ESERCIZIO 10
     Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
   */
-  
+  Math.random()
+  Math.random() * 10 // tra 0.000001 e 9.9999999
+  Math.floor(Math.random() * 10) // tra 0 e 9
+
+  const randomIndex = Math.floor(Math.random() * starWarsCharacters.length)
+const selectedCharacter = starWarsCharacters[randomIndex]
+
+console.log('The found character name is:', selectedCharacter.name)
+
+if (selectedCharacter.gender === 'female') {
+  console.log('She is', selectedCharacter.height, 'cm tall')
+} else {
+  console.log('He is', selectedCharacter.height, 'cm tall')
+}
+
+if (
+  selectedCharacter.hair_color !== 'n/a' &&
+  selectedCharacter.hair_color !== 'none'
+) {
+  console.log('and has', selectedCharacter.hair_color, 'hair,')
+} else {
+  console.log('and bald,')
+}
+
+console.log('with', selectedCharacter.skin_color, 'skin.')
